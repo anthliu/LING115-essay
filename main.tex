@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+
+%
+%Margin - 1 inch on all sides
+%
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}
+
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+
+%
+%Doublespacing
+%
+\usepackage{setspace}
+\doublespacing
+
+%
+%Rotating tables (e.g. sideways when too long)
+%
+\usepackage{rotating}
+
+
+%
+%Fancy-header package to modify header/page numbering (insert last name)
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{} 
+\chead{} 
+\rhead{Liu \thepage} 
+\lfoot{} 
+\cfoot{} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+%To make sure we actually have header 0.5in away from top edge
+%12pt is one-sixth of an inch. Subtract this from 0.5in to get headsep value
+\setlength\headsep{0.333in}
+
+%
+%Works cited environment
+%(to start, use \begin{workscited...}, each entry preceded by \bibent)
+% - from Ryan Alcock's MLA style file
+%
+\newcommand{\bibent}{\noindent \hangindent 40pt}
+\newenvironment{workscited}{\newpage \begin{center} Works Cited \end{center}}{\newpage }
+
+
+%
+%Begin document
+%
+\begin{document}
+\begin{flushleft}
+
+%%%%First page name, class, etc
+Anthony Liu\\
+Professor Marlyse Baptista\\
+LING 115\\
+December 18 2017\\
+
+
+%%%%Title
+\begin{center}
+Programming Languages and Natural Languages
+\end{center}
+
+
+%%%%Changes paragraph indentation to 0.5in
+\setlength{\parindent}{0.5in}
+%%%%Begin body of paper here
+
+A programming language is a set of instructions that tell a computer
+what actions to perform. Every application that runs on a computer
+is written using a programming language.
+%
+If you've heard of
+most popular languages used today, \textit{C, Java, Python}, etc, you may
+wonder - Why don't we use natural languages such as English to
+program? Surely programming in English is easier to learn and to teach
+than a programming language?
+%
+In fact, using natural languages to create programs has been the goal
+of many computer science researchers (Veres). However, the fact remains
+that none of these efforts are truly using the ``full capacity" of
+a natural language such as English in programming.
+
+Consider an analogy of writing a list of instructions for baking
+a cake. Though the instruction of \textit{1. Bake the cake.} may be humorous
+in its lack of information, the instruction is an essentially correct
+recipe of making a cake. The ambiguities of natural language
+cause them to be unsuitable for programming.
+%
+Even the mundane \textit{x. Stir dry ingredients in bowl until mixed.}
+is equally uninformative. Stir which ingredients?
+What does it mean for ingredients to be mixed? How does one stir ingredients?
+With a spoon? Clockwise? Of course, to the average cook, these questions are
+irrelevant and can answered by common sense. However, when telling a
+\textit{computer} to bake a cake, what does common sense mean? Does a
+computer know what it means to stir ingredients?
+%
+By using natural language to write a recipe, we are left with
+problems caused by ambiguities and a lack of precision.
+Programming languages must be exact. The programmer and the computer
+both agree on how a program should be executed.
+
+\begin{figure}[h]
+\centering
+\caption{Guess the number game in Python}
+\begin{lstlisting}
+answer = '42'
+guess = input()
+while guess != answer:
+    guess = input()
+print('You win!')
+\end{lstlisting}
+\label{fig:guess_number}
+\end{figure}
+
+Though natural language is unsuitable for direct use as a programming
+language, its influence and usage in programming languages is undeniable.
+In Figure \ref{fig:guess_number}, we show a simple ``Guess the number" game
+in the programming language \textit{Python}.
+The meaning of the program can be easily deciphered only using knowledge
+of English. Knowledge that most programming languages are evaluated line
+by line from top to bottom is also crucial. Set the \textit{answer} to be 42.
+Let the user set the value of \textit{guess}.
+While the value of \textit{guess} is not the same value
+as the value of \textit{answer},
+let the user set the value of \textit{guess} (the \textit{!=} word is an approximation
+for the mathematical inequality symbol $\neq$.).
+Finally, print (or display on the screen), ``You win!".
+
+The reason for most programming language's usage of natural languages
+in their design and implementation is twofold - 
+\begin{enumerate}
+\item The general idea of programming languages is the same as natural
+language - to put ideas into words. When a programming language needs
+a word to describe an idea, that idea is often already encoded into
+a word of natural language.
+\item As alluded to earlier, a primary goal of programming language
+designers and programmers is to have programming languages be both easy to
+learn and understand. Like a large manuscript, the greatest applications
+will have many subsections rewritten and modified when new features are
+added or old features are broken. This need is amplified when large
+teams must work on the same project, where programmers must read and
+understand their respective programs to build upon it.
+(As an example, as of 2014, the code
+for Facebook has over 9.9 \textit{million} lines of code (Pearce).)
+
+The most \textit{natural} way humans communicate is through natural
+language. The incorporation of natural language into programming
+increases our understanding.
+\end{enumerate}
+
+\newpage
+
+%%%%Works cited
+\begin{workscited}
+
+\bibent
+Veres, Sandor M., and J. Patrik Adolfsson. "A natural language programming solution for executable papers." \textit{Procedia Computer Science} 4 (2011): 678-687.
+
+\bibent
+Pearce, James. "9.9 million lines of code and still moving fast - Facebook open source ...." https://code.facebook.com/posts/292625127566143/9-9-million-lines-of-code-and-still-moving-fast-facebook-open-source-in-2014/. Accessed 17 Dec. 2017.
+
+\end{workscited}
+
+\end{flushleft}
+\end{document}
+\}
