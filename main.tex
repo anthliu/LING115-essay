@@ -10,6 +10,17 @@
 \floatstyle{boxed} 
 \restylefloat{figure}
 
+\lstset
+{ %Formatting for code in appendix
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
 \geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
 
 %
@@ -97,7 +108,7 @@ cause them to be unsuitable for programming.
 Even the mundane \textit{x. Stir dry ingredients in bowl until mixed.}
 is equally uninformative. Stir which ingredients?
 What does it mean for ingredients to be mixed? How does one stir ingredients?
-With a spoon? Clockwise? Of course, to the average cook, these questions are
+With a spoon? Stir clockwise? Of course, to the average cook, these questions are
 irrelevant and can answered by common sense. However, when telling a
 \textit{computer} to bake a cake, what does common sense mean? Does a
 computer know what it means to stir ingredients?
@@ -109,8 +120,19 @@ both agree on how a program should be executed.
 
 \begin{figure}[h]
 \centering
-\caption{Guess the number game in Python}
-\begin{lstlisting}
+\caption{
+``Guess the number game" in \textit{Python}.
+In plain words, we can describe the execution of this
+program line by line.
+1. Set the \textit{answer} to be 42.
+2. Let the user set the value of \textit{guess}.
+3-4. While the value of \textit{guess} is not the same value
+as the value of \textit{answer},
+let the user set the value of \textit{guess} (the \textit{!=} word is an approximation
+for the mathematical inequality symbol $\neq$.).
+5. Finally, print (or display on the screen), ``You win!".
+}
+\begin{lstlisting}[language=Python]
 answer = '42'
 guess = input()
 while guess != answer:
@@ -126,16 +148,12 @@ In Figure \ref{fig:guess_number}, we show a simple ``Guess the number" game
 in the programming language \textit{Python}.
 The meaning of the program can be easily deciphered only using knowledge
 of English. Knowledge that most programming languages are evaluated line
-by line from top to bottom is also crucial. Set the \textit{answer} to be 42.
-Let the user set the value of \textit{guess}.
-While the value of \textit{guess} is not the same value
-as the value of \textit{answer},
-let the user set the value of \textit{guess} (the \textit{!=} word is an approximation
-for the mathematical inequality symbol $\neq$.).
-Finally, print (or display on the screen), ``You win!".
+by line from top to bottom is also crucial.
 
-The reason for most programming language's usage of natural languages
-in their design and implementation is twofold - 
+The design and usage of Programming Languages is closely intertwined with spoken languages.
+The similarities in the number guessing game in Figure \ref{fig:guess_number}
+to its natural translation is no coincidence.
+There are two reasons -
 \begin{enumerate}
 \item The general idea of programming languages is the same as natural
 language - to put ideas into words. When a programming language needs
@@ -153,10 +171,69 @@ for Facebook has over 9.9 \textit{million} lines of code (Pearce).)
 
 The most \textit{natural} way humans communicate is through natural
 language. The incorporation of natural language into programming
-increases our understanding.
+increases the ease of understanding.
 \end{enumerate}
+There are two main ways natural language is incorporated into programming
+- the design of the programming language and usage of the language, the
+way programmer's ``speak" the language.
+
+To speak of language design, we must revisit the problem of precision
+written earlier, the difficulty of encoding our thoughts into the programs.
+How do we tell a computer how to send our email?
+How do we tell a computer how to display a photo on the screen?
+The simple solution is to restrict our language only to \textit{simplest}
+actions that a computer can do. Any application that is \textit{possible} to
+create on a computer, is created by a limited set of instructions, or words.
+Analogous, \textit{any} cooking recipe and technique can be described solely
+by the activation and release of each muscle in the human body. The act
+of stirring a bowl is carefully described from the usage of muscle groups
+in the forearm, to the tightening of the fingers around the spoon.
+Through this restriction, we sacrifice brevity and clarity for absolute
+precision.
+In the computer, these actions often include but are not limited to
+adding numbers, saving numbers into registers, or memory locations,
+and ``jumping", which can be used to repeat already executed code \footnotemark.
+
+\begin{figure}[h]
+\centering
+\caption[Caption for LOF]{
+Sample of the \textit{MIPS} ISA.
+For example, when the computer reads the number 40, the computer will store
+a value into its register, or memory. \footnotemark
+}
+\begin{tabular}{l l r}
+Instruction & Mnemonic & Encoding \\
+\hline
+Load Byte & LB & 32 \\
+Store Byte & SB & 40 \\
+Add & ADD & 0 \\
+\end{tabular}
+
+\label{fig:MIPS_sample}
+\end{figure}
+
+These simple sets of instructions are called
+\textit{Instruction Set Architectures}, or \textit{ISA}'s. Most ISA's will
+contain less than 100 instructions. A sample of an ISA still used today is shown
+in Figure \ref{fig:MIPS_sample}. Languages that directly 
 
 \newpage
+
+\begin{center}
+Notes
+\end{center}
+
+1. You may wonder how it is possible a finite set of simple instructions
+can be used to construct useful programs. In fact, it was mathematically proven
+by computer scientist Alan Turing that any program that can be written on a computer, can be written using
+a simple \textit{Turing machine} with (technically) three instructions, move,
+read, and write (Turing).
+
+2. In practice, computers will read in binary format, a format of representing
+numbers using only two symbols, 1 and 0.
+
+\setlength{\parindent}{0.5in}
+
 
 %%%%Works cited
 \begin{workscited}
@@ -166,6 +243,9 @@ Veres, Sandor M., and J. Patrik Adolfsson. "A natural language programming solut
 
 \bibent
 Pearce, James. "9.9 million lines of code and still moving fast - Facebook open source ...." https://code.facebook.com/posts/292625127566143/9-9-million-lines-of-code-and-still-moving-fast-facebook-open-source-in-2014/. Accessed 17 Dec. 2017.
+
+\bibent
+Turing, Alan M. "Computing machinery and intelligence." Mind 59.236 (1950): 433-460.
 
 \end{workscited}
 
