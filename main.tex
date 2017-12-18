@@ -270,8 +270,39 @@ the following command ``Print ``Hello" to the screen if the value of $x$ is
 to the screen.
 The translation into the C language is \verb|if (x == 10) { printf("Hello"); }|.
 In C, and in most programming languages, the location and relative ordering
-of the \verb|if| is important. A missplaced \verb|if| at the back of the
-\verb|printf| statement renders the program unrunnable!
+of the \verb|if| is important. A misplaced \verb|if| at the back of the
+\verb|printf| statement renders the program unable to run! In addition, every
+punctuation, \verb|(), ;, {}|, is important to language, akin to natural
+language grammar and punctuation.
+
+Another curious case of language restriction comes from the usage of the English
+word ``or". Similar to the usage of ``or" in mathematics, most languages
+treat ``or" as a evaluation on true and false statements, and not as the
+common usage as a choice. For example, the statement ``Would you like an
+apple or an orange?" is not common usage in programming. The usage is more
+akin to ``Are pigs falling from the sky, or am I crazy?".
+In programming and mathematics, the whole statement is considered true
+if \footnotemark \begin{enumerate}
+    \item Pigs are falling from the sky and I'm not crazy
+    \item Pigs are not falling from the sky but I'm crazy
+    \item Pigs are falling from the sky and I'm crazy
+\end{enumerate}
+
+When words from natural language are used in programming languages, they
+are often given new meaning instead of being restricted in the examples
+given earlier. Perhaps the most infamous case (known for generally being
+confusing to programming beginners) is the word \verb|static| in the
+language C++ and many other languages that use this keyword. The keyword
+is given a generally fixed definition of ``
+pertaining to or characterized by a fixed or stationary condition.",
+``showing little to no change",
+or ``lacking movement, development, or vitality" (``static").
+In C++, \verb|static| most pertains to the ``little to no change" definition,
+though its usage is given breath to wholly two different meanings.
+A \verb|static| variable is a variable that has a restricted lifetime, or
+usage in the scope the variable is found. A \verb|static| member of a
+class is a member that can be used without instantiating the a member of
+the class (Stroustrup).
 
 \newpage
 
@@ -294,7 +325,20 @@ still find use today in applications where performance is critical. Though,
 as computer performance has increased, usage of assembly has equivalently
 decreased (Hyde).
 
-5. All of the 
+5. All of the examples of programming language shown take inspiration
+from English. However, it is not the case that all programming languages use English.
+The language ALGOL 68, had a standard document that allowed the
+internalization of the language, allowing it translated into Russian,
+German, French, Bulgarian, and then later Japanese (Lindsey).
+
+6. Another point to make is that many natural languages such
+as english will merge the meanings
+of ``or" and ``exclusive or" into one meaning. ``Are pigs falling from
+the sky, or am I crazy? - \textbf{No}! You're crazy \textit{and} pigs are falling
+from the sky!" However, restricting to non-exclusive or, this dialogue should
+be changed to ``Are pigs falling from
+the sky, or am I crazy? - \textbf{Yes}! You're crazy \textit{and} pigs are falling
+from the sky!"
 
 \setlength{\parindent}{0.5in}
 
@@ -306,7 +350,16 @@ decreased (Hyde).
 Hyde, Randall. The art of assembly language. No Starch Press, 2010.
 
 \bibent
+Lindsey, Charles H. "A history of Algol 68." History of programming languages---II. ACM, 1996.
+
+\bibent
 Pearce, James. "9.9 million lines of code and still moving fast - Facebook open source ...." https://code.facebook.com/posts/292625127566143/9-9-million-lines-of-code-and-still-moving-fast-facebook-open-source-in-2014/. Accessed 17 Dec. 2017.
+
+\bibent
+"static". Dictionary.com Unabridged. Random House, Inc. 18 Dec. 2017. <Dictionary.com http://www.dictionary.com/browse/static>.
+
+\bibent
+Stroustrup, Bjarne. The C++ programming language. Pearson Education India, 2000.
 
 \bibent
 Turing, Alan M. "Computing machinery and intelligence." Mind 59.236 (1950): 433-460.
