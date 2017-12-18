@@ -181,7 +181,7 @@ To speak of language design, we must revisit the problem of precision
 written earlier, the difficulty of encoding our thoughts into the programs.
 How do we tell a computer how to send our email?
 How do we tell a computer how to display a photo on the screen?
-The simple solution is to restrict our language only to \textit{simplest}
+A simple solution is to restrict our language only to \textit{simplest}
 actions that a computer can do. Any application that is \textit{possible} to
 create on a computer, is created by a limited set of instructions, or words.
 Analogous, \textit{any} cooking recipe and technique can be described solely
@@ -215,7 +215,63 @@ Add & ADD & 0 \\
 These simple sets of instructions are called
 \textit{Instruction Set Architectures}, or \textit{ISA}'s. Most ISA's will
 contain less than 100 instructions. A sample of an ISA still used today is shown
-in Figure \ref{fig:MIPS_sample}. Languages that directly 
+in Figure \ref{fig:MIPS_sample}.
+
+Although we have gained precision through this definition, there is
+perhaps too much sacrifice in ease of use. Programming in these simple
+languages, also known as assembly languages, is known to be difficult (Hyde).
+Programming in assembly is tedious and error prone. Similar to writing
+assemble is the futile
+effort of trying to write a recipe using only muscle movements. Aside from
+being impossible to read, writing a single incorrect muscle twitch can
+result in a flying knife in the kitchen. \footnotemark
+
+How do we both leverage the precision gained from using assembly
+languages while making it easier to program? Just like natural languages,
+programming languages can be translated from one another. Programmers
+can use \textit{higher level languages}, languages more complex and 
+easier to use, then translate their code into \textit{lower level languages},
+such as assembly. With the power of this translation,
+also known as compilation, language designers
+have the power to define precise definitions of instructions, the
+grammar and structure of their language, while being able to give
+precise instructions to the computer. An example of code in a higher level
+language, Python, is shown in Figure \ref{fig:guess_number}. When running
+on a computer, this program is translated into a low level language, such
+as MIPS.
+
+\begin{figure}[h]
+\centering
+\caption[Caption for LOF]{If statements in programming languages.}
+\begin{tabular}{l l}
+    Language(s) & Format \\
+\hline
+    C-style languages (C/C++, Java, JavaScript) &
+    \verb|if (...) { ... } else { ... }| \\
+    Python & \verb|if ... :\n\t ... \n else: \n\t ...|
+\end{tabular}
+
+\label{fig:if_then}
+\end{figure}
+
+Words from natural language are constantly borrowed in the design of higher
+level languages. A prime example of borrowings is English in the current
+most popular languages. \verb|if (...) then (...) else (...)| statements,
+are found in almost every programming language, see Figure \ref{fig:if_then}.
+The concept of this conditional is universal in programming and language, that
+most programming languages will ``borrow" the words if, then, and else to use
+in the language. The most common words borrowed include
+\verb| while, for, var (variable), class|, etc. \footnotemark
+
+Despite the added power and flexibility higher level programming languages employ,
+the words borrowed from natural language are greatly restricted in meaning. Consider
+the following command ``Print ``Hello" to the screen if the value of $x$ is
+10." An equivalent statement is ``If the value of $x$ is 10, print ``Hello"
+to the screen.
+The translation into the C language is \verb|if (x == 10) { printf("Hello"); }|.
+In C, and in most programming languages, the location and relative ordering
+of the \verb|if| is important. A missplaced \verb|if| at the back of the
+\verb|printf| statement renders the program unrunnable!
 
 \newpage
 
@@ -229,8 +285,16 @@ by computer scientist Alan Turing that any program that can be written on a comp
 a simple \textit{Turing machine} with (technically) three instructions, move,
 read, and write (Turing).
 
-2. In practice, computers will read in binary format, a format of representing
+3. In practice, computers will read in binary format, a format of representing
 numbers using only two symbols, 1 and 0.
+
+4. Although assembly languages are difficult, they are powerful in their
+precision and flexibility. Directly writing in assembly languages
+still find use today in applications where performance is critical. Though,
+as computer performance has increased, usage of assembly has equivalently
+decreased (Hyde).
+
+5. All of the 
 
 \setlength{\parindent}{0.5in}
 
@@ -239,13 +303,16 @@ numbers using only two symbols, 1 and 0.
 \begin{workscited}
 
 \bibent
-Veres, Sandor M., and J. Patrik Adolfsson. "A natural language programming solution for executable papers." \textit{Procedia Computer Science} 4 (2011): 678-687.
+Hyde, Randall. The art of assembly language. No Starch Press, 2010.
 
 \bibent
 Pearce, James. "9.9 million lines of code and still moving fast - Facebook open source ...." https://code.facebook.com/posts/292625127566143/9-9-million-lines-of-code-and-still-moving-fast-facebook-open-source-in-2014/. Accessed 17 Dec. 2017.
 
 \bibent
 Turing, Alan M. "Computing machinery and intelligence." Mind 59.236 (1950): 433-460.
+
+\bibent
+Veres, Sandor M., and J. Patrik Adolfsson. "A natural language programming solution for executable papers." \textit{Procedia Computer Science} 4 (2011): 678-687.
 
 \end{workscited}
 
