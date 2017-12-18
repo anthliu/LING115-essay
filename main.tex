@@ -7,6 +7,8 @@
 \usepackage{times}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{csquotes}
+\usepackage{subcaption}
 \floatstyle{boxed} 
 \restylefloat{figure}
 
@@ -147,8 +149,8 @@ language, its influence and usage in programming languages is undeniable.
 In Figure \ref{fig:guess_number}, we show a simple ``Guess the number" game
 in the programming language \textit{Python}.
 The meaning of the program can be easily deciphered only using knowledge
-of English. Knowledge that most programming languages are evaluated line
-by line from top to bottom is also crucial.
+of English and that most programming languages are evaluated line
+by line from top to bottom.
 
 The design and usage of Programming Languages is closely intertwined with spoken languages.
 The similarities in the number guessing game in Figure \ref{fig:guess_number}
@@ -235,10 +237,17 @@ such as assembly. With the power of this translation,
 also known as compilation, language designers
 have the power to define precise definitions of instructions, the
 grammar and structure of their language, while being able to give
-precise instructions to the computer. An example of code in a higher level
+precise instructions to the computer. 
+An example of code in a higher level
 language, Python, is shown in Figure \ref{fig:guess_number}. When running
 on a computer, this program is translated into a low level language, such
 as MIPS.
+This freedom allows designers to bring clarity and ease of use to
+the language. By nature of natural language, the clearest meaning is
+the one written in ``plain English". The use of natural language
+in programming language design is most straightforward in the ``borrowing" of
+natural language words in instructions. This ``borrowing" can often
+restrict and expand their equivalent meanings in natural language.
 
 \begin{figure}[h]
 \centering
@@ -304,6 +313,113 @@ usage in the scope the variable is found. A \verb|static| member of a
 class is a member that can be used without instantiating the a member of
 the class (Stroustrup).
 
+Equally influential on the content of programs as the designer of the programming language
+is the writer of the program itself. Though language language designers
+restrict the language definition to enable precise communication between
+user and machine, it is ultimately the programmar that decides the final
+words of the work. There are 2 main ways programmer's use ideas from
+natural language in creating software - 1. Naming, 2. Commenting.
+
+\begin{figure}
+  \label{fig:naming_dem}
+  \begin{subfigure}[b]{0.4\textwidth}
+\begin{lstlisting}[language=Python]
+i = 0
+for j in range(10):
+    i += j
+print(i)
+\end{lstlisting}
+    \caption{``Unclear" variable naming}
+    \label{fig:left}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.4\textwidth}
+\begin{lstlisting}[language=Python]
+total = 0
+for curNum in range(10):
+    total += curNum
+print(total)
+\end{lstlisting}
+    \caption{Clear variable naming}
+    \label{fig:right}
+  \end{subfigure}
+  \caption{2 equivalent programs in Python with different
+  variable names. The intentions of the program on the right, b,
+  becomes immediately clear.}
+\end{figure}
+
+The naming of variables and functions, to many beginners, is a surprisingly
+important skill in programming. As stressed earlier, readability is vital
+to the lifetime of a large software project. In Figure 4,
+we demonstrate the clarity a good name can show in a trivial program.
+In variable naming, the immediate advantage of using natural language is
+obvious. Some more examples of good variable names \verb|isFinished|,
+\verb|ready_list|, \verb|WinningStack|, etc.
+
+Often non-English speakers will use foreign languages in their variable
+names. In stack-exchange, a question and answer foreign for programmers,
+some users share their experiences. Refer to Figure 5.
+
+\begin{figure}[h]
+    \label{fig:italian}
+\centering
+\caption[Caption for LOF]{
+    A response from an Italian programmer. ``I'm Italian and always use English, for names and comments. But many other Italian programmers use Italian language, or more often a strange English-Italian mix (something like IsUtenteCopy)."
+    (``Do people in non-English-Speaking countries code in English?")}
+\begin{lstlisting}[language=C]
+// Trovo la foto collegata al verbale
+tblVerbali rsVerbale;
+hr = rsVerbale.OpenByID(GetDBConn(), m_idVerbale);
+if( FAILED(hr) )
+    throw CErrorHR(hr);
+hr = rsVerbale.MoveFirst();
+if( S_OK != hr )
+    throw CError(_T("Record del verbale non trovato."));
+\end{lstlisting}
+\end{figure}
+
+Perhaps the most direct use of natural language in programming is the
+practice of commentating code. Often, to bring clarity to his/her work,
+a programmer will directly add ``comments" to the code. These ``comments"
+are snippets of natural language that explain or take notes on
+possibly confusing sections of code. An example is shown in Figure
+6.
+
+\begin{figure}[h]
+    \label{fig:os_code}
+\centering
+\caption[Caption for LOF]{
+    Code I have written for a class at UMich.
+}
+\begin{lstlisting}[language=C++]
+void mutex::impl::unlock_body() {
+    // catch misuse of unlock - throw when unlock an already unlocked lock
+    if (holder_thread_id == -1 || holder_thread_id != cpu::self()->impl_ptr->active_thread_id)
+    {
+        // Exception handling:
+        //  1. lock was never locked, but we call unlock
+        //  2. lock is acquired by some other thread, but we call unlock
+        // Throw exception: going back to user-level code
+        guard.store(false);
+        cpu::interrupt_enable();
+        throw std::runtime_error("Attempted unlock without locking mutex or unlocking without owning lock!\n");
+    }
+    ...
+\end{lstlisting}
+\end{figure}
+
+From the keywords carefully chosen in the design of programming languages,
+to the choices programmers make when writing in these languages, the
+act of programming is also an excercise in usage of natural language.
+In fact, as English is so dominant in most popular programming languages,
+many programmers believe that it is \textit{required} to know English
+to learn how to program (Atwood).
+Regardless, among programmers, there is no denying that any language is
+critical to learning how to program and programming itself.
+The greatest programs are the ones that not only bring algorithmic
+insight, but also bring it with absolute clarity, carrying an
+almost poetic beauty.
+
 \newpage
 
 \begin{center}
@@ -345,6 +461,13 @@ from the sky!"
 
 %%%%Works cited
 \begin{workscited}
+
+\bibent
+Atwood, Jeff. “Coding Horror.” The Ugly American Programmer, blog.codinghorror.com/the-ugly-american-programmer/. 
+
+\bibent
+``Do people in non-English-Speaking countries code in English?" Programming languages - Do people in non-English-Speaking countries code in English? - Software Engineering Stack Exchange, softwareengineering.stackexchange.com/questions/1483/do-people-in-non-english-speaking-countries-code-in-english.
+
 
 \bibent
 Hyde, Randall. The art of assembly language. No Starch Press, 2010.
